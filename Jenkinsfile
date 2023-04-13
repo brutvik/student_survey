@@ -12,8 +12,6 @@ pipeline{
                     //sh 'jar -cvf StudentSurvey.war -C WebContent/ .'
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh "docker login -u rutvikbrk1 -p ${DOCKERHUB_PASS}"
-                    def test(a,b,c)=${BUILD_TIMESTAMP}.split(' ')
-                    sh 'echo {a}'
                     sh 'docker build -t rutvikbrk1/645:${BUILD_TIMESTAMP} .'
 
                 }
