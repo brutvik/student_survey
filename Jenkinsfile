@@ -26,7 +26,7 @@ pipeline{
     }
     stage("Deploying to Rancher as single pod") {
         steps{
-            sh 'kubectl set image deployment/645 container-0=rutvikbrk1/student_survey:latest'
+            sh 'kubectl set image deployment/node-port container-0=rutvikbrk1/student_survey:latest'
         }
     }
     stage("Deploying to Rancher as load balancer"){
