@@ -8,7 +8,7 @@ pipeline{
             steps {
                 script {
                     checkout scm
-                    sh 'git pull'
+                    
                     sh 'rm -rf *.war'
                     sh 'jar -cvf student_survey.war -C /645 .'
                     sh 'echo ${BUILD_TIMESTAMP}'
