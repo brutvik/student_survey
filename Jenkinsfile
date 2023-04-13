@@ -13,6 +13,7 @@ pipeline{
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh "docker login -u rutvikbrk1 -p ${DOCKERHUB_PASS}"
                     def customImage = docker.build("rutvikbrk1/645:${BUILD_TIMESTAMP}")
+                    sh 'echo ${customImage}'
 
                 }
             }
