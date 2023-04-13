@@ -31,7 +31,7 @@ pipeline{
     }
     stage("Deploying to Rancher as load balancer"){
         steps {
-            sh 'kubectl set image deployment/loadbalancer-2 container-0=rutvikbrk1/645:${BUILD_TIMESTAMP}'
+            sh 'kubectl set image deployment/loadbalancer-2 container-0=rutvikbrk1/student:${BUILD_TIMESTAMP}'
         }
     }
     }
