@@ -9,7 +9,7 @@ pipeline{
                 script {
                     checkout scm
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf student_survey.war -C WebContent/ .'
+                    sh 'jar -cvf student_survey.war student_survey .'
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh "docker login -u rutvikbrk1 -p ${DOCKERHUB_PASS}"
                     sh 'docker build -t rutvikbrk1/645:latest .'
