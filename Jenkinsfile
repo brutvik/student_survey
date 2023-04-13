@@ -8,8 +8,8 @@ pipeline{
             steps {
                 script {
                     checkout scm
-                    //sh 'rm -rf *.war'
-                    //sh 'jar -cvf StudentSurvey.war -C WebContent/ .'
+                    sh 'rm -rf *.war'
+                    sh 'jar -cvf StudentSurvey.war -C WebContent/ .'
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh "docker login -u rutvikbrk1 -p ${DOCKERHUB_PASS}"
                     sh 'docker build -t rutvikbrk1/645:latest .'
@@ -20,13 +20,13 @@ pipeline{
     stage("Pushing Image to DockerHub") {
         steps {
             script {
-                sh 'docker push rutvikbrk1/645:latest'
+                sh 'docker push rutvikbrk1/student_survey:latest'
             }
         }
     }
     stage("Deploying to Rancher as single pod") {
         steps{
-            sh 'kubectl set image deployment/student-survey student-survey=rutvikbrk1/645:latest'
+            sh 'kubectl set image deployment/645 container-0=rutvikbrk1/student_survey:latest'
         }
     }
     stage("Deploying to Rancher as load balancer"){
