@@ -31,7 +31,7 @@ pipeline{
     }
     stage("Deploying to Rancher as load balancer"){
         steps {
-            sh 'kubectl set image deployment/studentsurvey645-lb studentsurvey645-lb=rutvikbrk1/645:${BUILD_TIMESTAMP} -n jenkins-pipeline'
+            sh 'kubectl set image deployment/studentsurvey645-lb studentsurvey645-lb=rutvikbrk1/645:${BUILD_TIMESTAMP}'
         }
     }
     }
