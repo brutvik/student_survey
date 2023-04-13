@@ -1,5 +1,4 @@
-FROM nginx
-
-COPY . /usr/share/nginx/html
+FROM tomcat:latest
+COPY student_survey /usr/local/tomcat/webapps/
 
 EXPOSE 8080
