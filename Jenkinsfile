@@ -26,7 +26,7 @@ pipeline{
     }
     stage("Deploying to Rancher as single pod") {
         steps{
-            sh 'kubectl set image deployment/student-survey student-survey=rutvikbrk1/645:latest'
+            sh 'kubectl set image deployment/assignment2 student-survey=rutvikbrk1/645:latest'
         }
     }
     stage("Deploying to Rancher as load balancer"){
