@@ -12,7 +12,7 @@ pipeline{
                     sh 'jar -cvf student_survey.war -C /645 .'
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh "docker login -u rutvikbrk1 -p ${DOCKERHUB_PASS}"
-                    sh 'docker build -t rutvikbrk1/student_survey:latest .'
+                    sh 'docker build -t rutvikbrk1/student_survey:${BUILD_TIMESTAMP} .'
 
                 }
             }
@@ -26,7 +26,7 @@ pipeline{
     }
     stage("Deploying to Rancher as single pod") {
         steps{
-            sh 'kubectl set image deployment/node-port container-0=rutvikbrk1/student_survey:latest'
+            sh 'kubectl set image deployment/node-port container-0=rutvikbrk1/student_survey:${BUILD_TIMESTAMP}'
         }
     }
     stage("Deploying to Rancher as load balancer"){
